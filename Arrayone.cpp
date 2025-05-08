@@ -101,18 +101,51 @@ int main()
     // return 0;
 
     //------------Missing number in array
-    int arr[] = {1, 2, 3, 4, 5, 6, 8, 9};
+
+    // int arr[] = {1, 2, 3, 4, 5, 6, 8, 9};
 
     // sum of array
-    int sum = 0;
-    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
-    {
-        sum += arr[i];
-    }
+    // int sum = 0;
+    // for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+    // {
+    //     sum += arr[i];
+    // }
 
     // sum of n numbers
-    int n = sizeof(arr) / sizeof(arr[0]) + 1;
+    // int n = sizeof(arr) / sizeof(arr[0]) + 1;
 
-    int ans = n * (n + 1) / 2;
-    cout << "The missing number is: " << ans - sum << endl;
+    // int ans = n * (n + 1) / 2;
+    // cout << "The missing number is: " << ans - sum << endl;
+
+    //------------fibonacci series
+
+    // int n;
+    // cout << "Enter the number of terms: ";
+    // cin >> n;
+    // int arr[1000];
+
+    // arr[0] = 0;
+    // arr[1] = 1;
+    // for(int i=2;i<=n-1;i++){
+    //     arr[i] = arr[i-1] + arr[i-2];
+    // }
+
+    // cout<< arr[n-1] << endl;
+
+    //------------Rotate array by  one position
+
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int lastElement = arr[n - 1];
+    for (int i = n - 1; i > 0; i--)
+    {
+        arr[i] = arr[i - 1];
+    }
+    arr[0] = lastElement;
+    cout << "Array after rotation: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
 }
