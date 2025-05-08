@@ -77,26 +77,42 @@ int main()
     // }
 
     //------------Second largest element in array
-    int arr[] = {1, 2, 3, 4, 5};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int ans = INT8_MIN;
+    // int arr[] = {1, 2, 3, 4, 5};
+    // int n = sizeof(arr) / sizeof(arr[0]);
+    // int ans = INT8_MIN;
 
-    for (int i = 0; i < n; i++)
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (arr[i] > ans)
+    //     {
+    //         ans = arr[i];
+    //     }
+    // }
+
+    // int second = INT8_MIN;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (arr[i] != ans)
+    //     {
+    //         second = max(second, arr[i]);
+    //     }
+    // }
+    // cout << "The second largest element is: " << second << endl;
+    // return 0;
+
+    //------------Missing number in array
+    int arr[] = {1, 2, 3, 4, 5, 6, 8, 9};
+
+    // sum of array
+    int sum = 0;
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
     {
-        if (arr[i] > ans)
-        {
-            ans = arr[i];
-        }
+        sum += arr[i];
     }
 
-    int second = INT8_MIN;
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] != ans)
-        {
-            second = max(second, arr[i]);
-        }
-    }
-    cout << "The second largest element is: " << second << endl;
-    return 0;
+    // sum of n numbers
+    int n = sizeof(arr) / sizeof(arr[0]) + 1;
+
+    int ans = n * (n + 1) / 2;
+    cout << "The missing number is: " << ans - sum << endl;
 }
