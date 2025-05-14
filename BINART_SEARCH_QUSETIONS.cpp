@@ -88,35 +88,67 @@ using namespace std;
 
 // -----------find sqrt of a number
 
+// int main()
+// {
+//     int x;
+//     int start = 0, end = x, mid, ans;
+//     cout << "Enter the number: ";
+//     cin >> x;
+//     if (x < 2)
+//     {
+//         cout << "Square root of " << x << " is: " << x << endl;
+//     }
+
+//     while (start <= end)
+//     {
+//         mid = start + (end - start) / 2;
+//         if (mid == x / mid)
+//         {
+//             ans = mid;
+//             break;
+//         }
+//         else if (mid < x / mid)
+//         {
+//             ans = mid;
+//             start = mid + 1;
+//         }
+//         else
+//         {
+//             end = mid - 1;
+//         }
+//     }
+
+//     cout << "Square root of " << x << " is: " << ans << endl;
+// }
+
+//--------Peak element in an array
+
 int main()
 {
-    int x;
-    int start = 0, end = x, mid, ans;
-    cout << "Enter the number: ";
-    cin >> x;
-    if (x < 2)
-    {
-        cout << "Square root of " << x << " is: " << x << endl;
-    }
+    int arr[] = {1, 3, 20, 7, 4, 1, 0};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int start = 0, end = n - 1, mid;
 
     while (start <= end)
     {
         mid = start + (end - start) / 2;
-        if (mid == x / mid)
+
+        bool leftOK = (mid == 0) || (arr[mid] >= arr[mid - 1]);
+        bool rightOK = (mid == n - 1) || (arr[mid] >= arr[mid + 1]);
+
+        if (leftOK && rightOK)
         {
-            ans = mid;
-            break;
+            cout << "Peak element is: " << arr[mid] << " at index " << mid << endl;
+            return 0;
         }
-        else if (mid < x / mid)
-        {
-            ans = mid;
-            start = mid + 1;
-        }
-        else
+
+        if (mid > 0 && arr[mid - 1] > arr[mid])
         {
             end = mid - 1;
         }
+        else
+        {
+            start = mid + 1;
+        }
     }
-
-    cout << "Square root of " << x << " is: " << ans << endl;
 }
