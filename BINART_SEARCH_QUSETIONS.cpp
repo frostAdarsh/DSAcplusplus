@@ -123,32 +123,60 @@ using namespace std;
 
 //--------Peak element in an array
 
+// int main()
+// {
+//     int arr[] = {1, 3, 20, 7, 4, 1, 0};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+//     int start = 0, end = n - 1, mid;
+
+//     while (start <= end)
+//     {
+//         mid = start + (end - start) / 2;
+
+//         bool leftOK = (mid == 0) || (arr[mid] >= arr[mid - 1]);
+//         bool rightOK = (mid == n - 1) || (arr[mid] >= arr[mid + 1]);
+
+//         if (leftOK && rightOK)
+//         {
+//             cout << "Peak element is: " << arr[mid] << " at index " << mid << endl;
+//             return 0;
+//         }
+
+//         if (mid > 0 && arr[mid - 1] > arr[mid])
+//         {
+//             end = mid - 1;
+//         }
+//         else
+//         {
+//             start = mid + 1;
+//         }
+//     }
+// }
+
+//----------Find Minimum in rotated sorted array
+
 int main()
 {
-    int arr[] = {1, 3, 20, 7, 4, 1, 0};
+    int arr[] = {4, 5, 6, 7, 0, 1, 2};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int start = 0, end = n - 1, mid;
+    int start = 0, end = n - 1, mid, ans = arr[0];
 
     while (start <= end)
     {
         mid = start + (end - start) / 2;
 
-        bool leftOK = (mid == 0) || (arr[mid] >= arr[mid - 1]);
-        bool rightOK = (mid == n - 1) || (arr[mid] >= arr[mid + 1]);
-
-        if (leftOK && rightOK)
-        {
-            cout << "Peak element is: " << arr[mid] << " at index " << mid << endl;
-            return 0;
-        }
-
-        if (mid > 0 && arr[mid - 1] > arr[mid])
-        {
-            end = mid - 1;
-        }
-        else
+        // Left side Sorted
+        if (arr[mid] >= arr[0])
         {
             start = mid + 1;
         }
+
+        // Right side Sorted
+        else
+        {
+            ans = arr[mid];
+            end = mid - 1;
+        }
     }
+    cout << "Minimum element in rotated sorted array is: " << ans << endl;
 }
