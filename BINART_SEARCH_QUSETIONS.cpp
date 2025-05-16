@@ -155,28 +155,79 @@ using namespace std;
 
 //----------Find Minimum in rotated sorted array
 
+// int main()
+// {
+//     int arr[] = {4, 5, 6, 7, 0, 1, 2};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+//     int start = 0, end = n - 1, mid, ans = arr[0];
+
+//     while (start <= end)
+//     {
+//         mid = start + (end - start) / 2;
+
+//         // Left side Sorted
+//         if (arr[mid] >= arr[0])
+//         {
+//             start = mid + 1;
+//         }
+
+//         // Right side Sorted
+//         else
+//         {
+//             ans = arr[mid];
+//             end = mid - 1;
+//         }
+//     }
+//     cout << "Minimum element in rotated sorted array is: " << ans << endl;
+// }
+
+//--------Search in rotated sorted array
+
 int main()
 {
     int arr[] = {4, 5, 6, 7, 0, 1, 2};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int start = 0, end = n - 1, mid, ans = arr[0];
+    int start = 0, end = n - 1, mid;
+    int x;
+    cout << "Enter the number to search: ";
+    cin >> x;
 
     while (start <= end)
     {
         mid = start + (end - start) / 2;
 
-        // Left side Sorted
-        if (arr[mid] >= arr[0])
+        if (arr[mid] == x)
         {
-            start = mid + 1;
+            cout << "Element found at index: " << mid << endl;
+            return 0;
         }
 
-        // Right side Sorted
+        // Left half is sorted
+        if (arr[mid] >= arr[start])
+        {
+            if (x >= arr[start] && x < arr[mid])
+            {
+                end = mid - 1;
+            }
+            else
+            {
+                start = mid + 1;
+            }
+        }
+        // Right half is sorted
         else
         {
-            ans = arr[mid];
-            end = mid - 1;
+            if (x > arr[mid] && x <= arr[end])
+            {
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
         }
     }
-    cout << "Minimum element in rotated sorted array is: " << ans << endl;
+
+    cout << "Element not found." << endl;
+    return 0;
 }
