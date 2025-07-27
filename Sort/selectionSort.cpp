@@ -1,3 +1,7 @@
+
+// This program implements the Selection Sort algorithm in C++.
+//selection Sort works by repeatedly finding the minimum element from the unsorted part and moving it to the beginning.
+// It has a time complexity of O(n^2) and is not a stable sort. 
 #include <iostream>
 using namespace std;
 
